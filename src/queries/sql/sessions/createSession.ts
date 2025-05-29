@@ -26,7 +26,7 @@ export async function createSession(data: Prisma.SessionCreateInput) {
       os,
       device,
       ip,
-      user_agent: userAgent,
+      userAgent,
       screen,
       language,
       country,

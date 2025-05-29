@@ -34,7 +34,7 @@ model Session {
   os         String?   @db.VarChar(20)
   device     String?   @db.VarChar(20)
   ip         String?   @db.VarChar(100)
-  userAgent  String?   @db.VarChar(190)
+  userAgent  String?   @map("user_agent") @db.VarChar(190)
   screen     String?   @db.VarChar(11)
   language   String?   @db.VarChar(35)
   country    String?   @db.Char(2)
