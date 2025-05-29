@@ -27,7 +27,7 @@ const schema = z.object({
     name: z.string().max(50).optional(),
     tag: z.string().max(50).optional(),
     ip: z.string().ip().optional(),
-    userAgent: z.string().optional(),
+    user_agent: z.string().optional(),
     timestamp: z.coerce.number().int().optional(),
     id: z.string().optional(),
   }),
