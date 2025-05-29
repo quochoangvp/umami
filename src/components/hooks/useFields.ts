@@ -11,6 +11,8 @@ export function useFields() {
     { name: 'browser', type: 'string', label: formatMessage(labels.browser) },
     { name: 'os', type: 'string', label: formatMessage(labels.os) },
     { name: 'device', type: 'string', label: formatMessage(labels.device) },
+    { name: 'ip', type: 'string', label: formatMessage(labels.ip) },
+    { name: 'userAgent', type: 'string', label: formatMessage(labels.userAgent) },
     { name: 'country', type: 'string', label: formatMessage(labels.country) },
     { name: 'region', type: 'string', label: formatMessage(labels.region) },
     { name: 'city', type: 'string', label: formatMessage(labels.city) },

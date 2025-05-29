@@ -25,6 +25,8 @@ export interface SaveEventArgs {
   distinctId?: string;
   browser?: string;
   os?: string;
+  ip?: string;
+  userAgent?: string;
   device?: string;
   screen?: string;
   language?: string;
@@ -142,6 +144,8 @@ async function clickhouseQuery({
   pageTitle,
   browser,
   os,
+  ip,
+  userAgent,
   device,
   screen,
   language,
@@ -205,6 +209,8 @@ async function clickhouseQuery({
     created_at: getUTCString(createdAt),
     browser,
     os,
+    ip,
+    userAgent,
     device,
     screen,
     language,

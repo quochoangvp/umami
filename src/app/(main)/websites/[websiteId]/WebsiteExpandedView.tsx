@@ -30,6 +30,8 @@ const views = {
   browser: BrowsersTable,
   os: OSTable,
   device: DevicesTable,
+  ip: DevicesTable,
+  userAgent: DevicesTable,
   screen: ScreenTable,
   country: CountriesTable,
   region: RegionsTable,
@@ -86,6 +88,16 @@ export default function WebsiteExpandedView({
       key: 'device',
       label: formatMessage(labels.devices),
       url: renderUrl({ view: 'device' }),
+    },
+    {
+      key: 'ip',
+      label: formatMessage(labels.ip),
+      url: renderUrl({ view: 'ip' }),
+    },
+    {
+      key: 'userAgent',
+      label: formatMessage(labels.userAgent),
+      url: renderUrl({ view: 'userAgent' }),
     },
     {
       key: 'country',

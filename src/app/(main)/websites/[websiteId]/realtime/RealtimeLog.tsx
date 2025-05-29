@@ -66,8 +66,10 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
     os: string;
     country: string;
     device: string;
+    ip: string;
+    userAgent: string;
   }) => {
-    const { __type, eventName, urlPath: url, browser, os, country, device } = log;
+    const { __type, eventName, urlPath: url, browser, os, country, device, ip, userAgent } = log;
 
     if (__type === TYPE_EVENT) {
       return formatMessage(messages.eventLog, {
@@ -105,6 +107,8 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
         browser: <b key="browser">{BROWSERS[browser]}</b>,
         os: <b key="os">{OS_NAMES[os] || os}</b>,
         device: <b key="device">{formatMessage(labels[device] || labels.unknown)}</b>,
+        ip: <b key="ip">{formatMessage(labels[ip] || labels.unknown)}</b>,
+        userAgent: <b key="userAgent">{formatMessage(labels[userAgent] || labels.unknown)}</b>,
       });
     }
   };
@@ -133,7 +137,7 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
     let logs = data.events;
 
     if (search) {
-      logs = logs.filter(({ eventName, urlPath, browser, os, country, device }) => {
+      logs = logs.filter(({ eventName, urlPath, browser, os, country, device, ip, userAgent }) => {
         return [
           eventName,
           urlPath,
@@ -141,6 +145,8 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
           formatValue(browser, 'browser'),
           formatValue(country, 'country'),
           formatValue(device, 'device'),
+          formatValue(ip, 'ip'),
+          formatValue(userAgent, 'userAgent'),
         ]
           .filter(n => n)
           .map(n => n.toLowerCase())

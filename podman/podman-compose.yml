@@ -5,7 +5,7 @@ services:
     container_name: umami
     image: ghcr.io/umami-software/umami:postgresql-latest
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:3001:3001"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       DATABASE_TYPE: ${DATABASE_TYPE}
@@ -16,7 +16,7 @@ services:
     init: true
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/heartbeat || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/api/heartbeat || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 5

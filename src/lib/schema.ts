@@ -10,6 +10,8 @@ export const filterParams = {
   os: z.string().optional(),
   browser: z.string().optional(),
   device: z.string().optional(),
+  ip: z.string().optional(),
+  userAgent: z.string().optional(),
   country: z.string().optional(),
   region: z.string().optional(),
   city: z.string().optional(),

@@ -22,6 +22,8 @@ CREATE TABLE "session" (
     "browser" VARCHAR(20),
     "os" VARCHAR(20),
     "device" VARCHAR(20),
+    "ip" VARCHAR(100),
+    "user_agent" VARCHAR(190),
     "screen" VARCHAR(11),
     "language" VARCHAR(35),
     "country" CHAR(2),

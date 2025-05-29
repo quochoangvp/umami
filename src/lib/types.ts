@@ -151,6 +151,8 @@ export interface QueryFilters {
   os?: string;
   browser?: string;
   device?: string;
+  ip?: string;
+  userAgent?: string;
   country?: string;
   region?: string;
   city?: string;

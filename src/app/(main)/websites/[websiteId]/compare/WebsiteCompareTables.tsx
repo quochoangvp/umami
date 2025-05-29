@@ -29,6 +29,8 @@ const views = {
   browser: BrowsersTable,
   os: OSTable,
   device: DevicesTable,
+  ip: DevicesTable,
+  userAgent: DevicesTable,
   screen: ScreenTable,
   country: CountriesTable,
   region: RegionsTable,

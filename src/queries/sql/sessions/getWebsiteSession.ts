@@ -21,6 +21,8 @@ async function relationalQuery(websiteId: string, sessionId: string) {
       browser,
       os,
       device,
+      ip,
+      user_agent as "userAgent",
       screen,
       language,
       country,
@@ -41,6 +43,8 @@ async function relationalQuery(websiteId: string, sessionId: string) {
           session.browser,
           session.os,
           session.device,
+          session.ip,
+          session.user_agent,
           session.screen,
           session.language,
           session.country,
@@ -54,8 +58,8 @@ async function relationalQuery(websiteId: string, sessionId: string) {
     join website_event on website_event.session_id = session.session_id
     where session.website_id = {{websiteId::uuid}}
       and session.session_id = {{sessionId::uuid}}
-    group by session.session_id, session.distinct_id, visit_id, session.website_id, website_event.hostname, session.browser, session.os, session.device, session.screen, session.language, session.country, session.region, session.city) t
-    group by id, distinct_id, website_id, hostname, browser, os, device, screen, language, country, region, city;
+    group by session.session_id, session.distinct_id, visit_id, session.website_id, website_event.hostname, session.browser, session.os, session.device, session.ip, session.user_agent, session.screen, session.language, session.country, session.region, session.city) t
+    group by id, distinct_id, website_id, hostname, browser, os, device, ip, user_agent, screen, language, country, region, city;
     `,
     { websiteId, sessionId },
   ).then(result => result?.[0]);
@@ -73,6 +77,8 @@ async function clickhouseQuery(websiteId: string, sessionId: string) {
       browser,
       os,
       device,
+      ip,
+      userAgent,
       screen,
       language,
       country,
@@ -93,6 +99,8 @@ async function clickhouseQuery(websiteId: string, sessionId: string) {
               browser,
               os,
               device,
+              ip,
+              user_agent as userAgent,
               screen,
               language,
               country,
@@ -105,8 +113,8 @@ async function clickhouseQuery(websiteId: string, sessionId: string) {
         from website_event_stats_hourly
         where website_id = {websiteId:UUID}
           and session_id = {sessionId:UUID}
-        group by session_id, distinct_id, visit_id, website_id, hostname, browser, os, device, screen, language, country, region, city) t
-    group by id, websiteId, distinctId, hostname, browser, os, device, screen, language, country, region, city;
+        group by session_id, distinct_id, visit_id, website_id, hostname, browser, os, device, ip, user_agent, screen, language, country, region, city) t
+    group by id, websiteId, distinctId, hostname, browser, os, device, ip, userAgent, screen, language, country, region, city;
     `,
     { websiteId, sessionId },
   ).then(result => result?.[0]);

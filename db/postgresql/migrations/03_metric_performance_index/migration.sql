@@ -20,6 +20,12 @@ CREATE INDEX "session_website_id_created_at_os_idx" ON "session"("website_id", "
 CREATE INDEX "session_website_id_created_at_device_idx" ON "session"("website_id", "created_at", "device");
 
 -- CreateIndex
+CREATE INDEX "session_website_id_created_at_ip_idx" ON "session"("website_id", "created_at", "ip");
+
+-- CreateIndex
+CREATE INDEX "session_website_id_created_at_user_agent_idx" ON "session"("website_id", "created_at", "user_agent");
+
+-- CreateIndex
 CREATE INDEX "session_website_id_created_at_screen_idx" ON "session"("website_id", "created_at", "screen");
 
 -- CreateIndex

@@ -58,6 +58,8 @@ export const FILTER_COLUMNS = {
   os: 'os',
   browser: 'browser',
   device: 'device',
+  ip: 'ip',
+  userAgent: 'userAgent',
   country: 'country',
   region: 'region',
   city: 'city',

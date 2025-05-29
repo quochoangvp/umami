@@ -23,6 +23,8 @@ async function relationalQuery(websiteId: string, filters: QueryFilters) {
         session.browser,
         session.os,
         session.device,
+        session.ip,
+        session.user_agent,
         session.country,
         website_event.url_path as "urlPath",
         website_event.referrer_domain as "referrerDomain"
@@ -52,6 +54,8 @@ async function clickhouseQuery(websiteId: string, filters: QueryFilters): Promis
             browser,
             os,
             device,
+            ip,
+            user_agent as userAgent,
             country,
             url_path as urlPath,
             referrer_domain as referrerDomain

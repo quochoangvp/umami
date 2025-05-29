@@ -5,7 +5,7 @@ export function TypeIcon({
   value,
   children,
 }: {
-  type: 'browser' | 'country' | 'device' | 'os';
+  type: 'browser' | 'country' | 'device' | 'os' | 'ip' | 'userAgent';
   value: string;
   children?: ReactNode;
 }) {

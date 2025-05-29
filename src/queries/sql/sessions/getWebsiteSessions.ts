@@ -32,6 +32,8 @@ async function relationalQuery(websiteId: string, filters: QueryFilters, pagePar
       session.browser,
       session.os,
       session.device,
+      session.ip,
+      session.user_agent as "userAgent",
       session.screen,
       session.language,
       session.country,
@@ -53,7 +55,9 @@ async function relationalQuery(websiteId: string, filters: QueryFilters, pagePar
            or city ${like} {{search}}
            or browser ${like} {{search}}
            or os ${like} {{search}}
-           or device ${like} {{search}})`
+           or device ${like} {{search}})
+           or ip ${like} {{search}})
+           or user_agent ${like} {{search}})`
         : ''
     }
     group by session.session_id, 
@@ -62,6 +66,8 @@ async function relationalQuery(websiteId: string, filters: QueryFilters, pagePar
       session.browser, 
       session.os, 
       session.device, 
+      session.ip, 
+      session.user_agent, 
       session.screen, 
       session.language, 
       session.country, 
@@ -91,6 +97,8 @@ async function clickhouseQuery(websiteId: string, filters: QueryFilters, pagePar
       browser,
       os,
       device,
+      ip,
+      user_agent as userAgent,
       screen,
       language,
       country,
@@ -111,10 +119,12 @@ async function clickhouseQuery(websiteId: string, filters: QueryFilters, pagePar
            or (positionCaseInsensitive(city, {search:String}) > 0)
            or (positionCaseInsensitive(browser, {search:String}) > 0)
            or (positionCaseInsensitive(os, {search:String}) > 0)
-           or (positionCaseInsensitive(device, {search:String}) > 0))`
+           or (positionCaseInsensitive(device, {search:String}) > 0))
+           or (positionCaseInsensitive(ip, {search:String}) > 0))
+           or (positionCaseInsensitive(user_agent, {search:String}) > 0))`
         : ''
     }
-    group by session_id, website_id, hostname, browser, os, device, screen, language, country, region, city
+    group by session_id, website_id, hostname, browser, os, device, ip, user_agent, screen, language, country, region, city
     order by lastAt desc
     limit 1000)
     select * from sessions
