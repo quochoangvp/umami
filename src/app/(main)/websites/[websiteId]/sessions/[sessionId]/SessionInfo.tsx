@@ -61,16 +61,10 @@ export default function SessionInfo({ data }) {
         </dd>
 
         <dt>{formatMessage(labels.ip)}</dt>
-        <dd>
-          <TypeIcon type="ip" value={data?.ip} />
-          {formatValue(data?.ip, 'ip')}
-        </dd>
+        <dd>{data?.ip}</dd>
 
         <dt>{formatMessage(labels.userAgent)}</dt>
-        <dd>
-          <TypeIcon type="userAgent" value={data?.userAgent} />
-          {formatValue(data?.userAgent, 'userAgent')}
-        </dd>
+        <dd>{data?.userAgent}</dd>
 
         <dt>{formatMessage(labels.browser)}</dt>
         <dd>

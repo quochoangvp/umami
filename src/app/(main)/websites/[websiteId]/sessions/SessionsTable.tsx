@@ -50,20 +50,8 @@ export function SessionsTable({ data = [] }: { data: any[]; showDomain?: boolean
           </TypeIcon>
         )}
       </GridColumn>
-      <GridColumn name="ip" label={formatMessage(labels.ip)}>
-        {row => (
-          <TypeIcon type="ip" value={row.ip}>
-            {formatValue(row.ip, 'ip')}
-          </TypeIcon>
-        )}
-      </GridColumn>
-      <GridColumn name="userAgent" label={formatMessage(labels.userAgent)}>
-        {row => (
-          <TypeIcon type="userAgent" value={row.userAgent}>
-            {formatValue(row.userAgent, 'userAgent')}
-          </TypeIcon>
-        )}
-      </GridColumn>
+      <GridColumn name="ip" label={formatMessage(labels.ip)} />
+      <GridColumn name="userAgent" label={formatMessage(labels.userAgent)} />
       <GridColumn name="lastAt" label={formatMessage(labels.lastSeen)}>
         {row => formatTimezoneDate(row.createdAt, 'PPPpp')}
       </GridColumn>
